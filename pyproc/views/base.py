@@ -9,7 +9,7 @@ from flask import (
 
 
 def responsify(func):
-    """Decorator used to check authentication on views."""
+    """Decorator used to automatically serialize dict like responses."""
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
