@@ -12,10 +12,11 @@ CONFIG = os.getenv("FLASK_CONFIG") or "default"
 
 # Authentication related settings.
 ETC = os.path.join("etc", "pyproc")
-SECRET_KEY_PATH, = map(
+SECRET_KEY_PATH, BROKER_CONN_PATH = map(
     lambda name: os.path.join(ETC, name),
     [
         "secret.key",
+        "broker.json",
     ]
 )
 

@@ -8,13 +8,18 @@ class BaseConfig(object):
 
     """Common configuration."""
 
+    # Server related flags.
     DEBUG = False
     TESTING = False
-
     SECRET_KEY = utils.get_secret_key()
     SSL_DISABLE = False
-
     PROPAGATE_EXCEPTIONS = False
+
+    # Celery related configuration.
+    _ADDR_DETAILS = utils.get_broker()
+    _ADDRESS = "pyamqp://{username}:{password}@{host}".format(**_ADDR_DETAILS)
+    CELERY_BROKER_URL = _ADDRESS
+    CELERY_RESULT_BACKEND = _ADDRESS
 
 
 class ProductionConfig(BaseConfig):

@@ -3,6 +3,7 @@
 
 import base64
 import hashlib
+import json
 import os
 
 import functools32
@@ -23,3 +24,10 @@ def get_secret_key():
     key = base64.b64decode(key_data)
     # Compute and return key hash.
     return hashlib.sha256(key).digest()
+
+
+@functools32.lru_cache()
+def get_broker():
+    broker_data = read(settings.BROKER_CONN_PATH)
+    broker_dict = json.loads(broker_data)
+    return broker_dict
