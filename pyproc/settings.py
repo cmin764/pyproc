@@ -1,4 +1,4 @@
-"""SkillIn default settings."""
+"""Default settings for pyproc."""
 
 
 import os
