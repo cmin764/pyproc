@@ -1,0 +1,36 @@
+#! /usr/bin/env python
+
+
+import argparse
+import logging
+
+import pyproc
+
+
+def run_func(_):
+    pyproc.app.run(host=pyproc.HOST, port=pyproc.PORT, threaded=True)
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="API based processing queue with Flask and Celery."
+    )
+    subparsers = parser.add_subparsers(title="commands")
+
+    run_parser = subparsers.add_parser(
+        "run",
+        help="run the server with Flask"
+    )
+    run_parser.set_defaults(func=run_func)
+
+    args = parser.parse_args()
+    try:
+        args.func(args)
+    except Exception as exc:
+        logging.error(exc)
+    else:
+        logging.info("Operation completed successfully.")
+
+
+if __name__ == "__main__":
+    main()
