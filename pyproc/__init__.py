@@ -2,7 +2,7 @@ from flask import Flask
 
 from . import config, settings
 from .settings import HOST, PORT, PROJECT
-from .tasks import make_celery
+from .utils import make_celery
 
 
 # Entire Flask application and its configuration.

@@ -17,7 +17,8 @@ class BaseConfig(object):
 
     # Celery related configuration.
     _ADDR_DETAILS = utils.get_broker()
-    _ADDRESS = "pyamqp://{username}:{password}@{host}".format(**_ADDR_DETAILS)
+    _ADDRESS = "amqp://{username}:{password}@{host}:{port}/{vhost}".format(
+        **_ADDR_DETAILS)
     CELERY_BROKER_URL = _ADDRESS
     CELERY_RESULT_BACKEND = _ADDRESS
 
