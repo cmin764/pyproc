@@ -81,7 +81,7 @@ ETC = os.path.join("etc", "pyproc")
 
 setup(
     name="pyproc",
-    version="0.2.1",
+    version="0.2.2",
     description="API based processing queue with Flask and Celery.",
     long_description=read("README.md") or "",
     url="https://github.com/cmin764/pyproc.git",
@@ -92,7 +92,7 @@ setup(
     scripts=[os.path.join("bin", "pyproc")],
     include_package_data=True,
     zip_safe=False,
-    install_requires=get_requirements(), local=LOCAL,
+    install_requires=get_requirements(),
     test_suite="tests",
     data_files = [
         get_data_files(source, files, use_source=USE_SOURCE)
